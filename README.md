@@ -20,4 +20,6 @@ Road Map, you're hilarious, but here are a few thoughts:
 Current API end-points:
 
 - [https://lair-dice.azurewebsites.net/diceroll/1d20] - Roll 1d20 dice
+- [https://lair-dice.whiskeyandcode.com/diceroll/2d20] - Same as above w/ sub-domain
 - [https://lair-dice.azurewebsites.net/swagger/index.html] - Swagger docs
+- [https://lair-dice.whiskeyandcode.com/swagger/index.html] - Swagger docs
