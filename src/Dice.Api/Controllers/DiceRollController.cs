@@ -1,5 +1,6 @@
 using System;
 using Dice.Api.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -18,13 +19,22 @@ namespace Dice.Api.Controllers
 
         // GET: diceroll/{dice}
         [HttpGet("{dice}")]
-        public DiceRoll Get(string dice)
+        public ActionResult<DiceRoll> Get(string dice)
         {
-            return new DiceRoll
+            if (dice is null)
+            {
+                return BadRequest();
+            }
+
+            var diceRoll = new DiceRoll
             {
                 Dice = dice,
                 Roll = RollDice(dice)
             };
+
+            _logger.LogInformation($"Dice: {dice}, Roll: {diceRoll.Roll}");
+
+            return diceRoll;
         }
 
         private int RollDice(string dice)

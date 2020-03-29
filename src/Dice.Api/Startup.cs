@@ -20,8 +20,22 @@ namespace Dice.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // database-layer
             services.AddDbContext<TodoContext>(OperatingSystem =>
                 OperatingSystem.UseInMemoryDatabase("TodoList"));
+
+            // swagger
+            services.AddSwaggerDocument(config =>
+            {
+                config.PostProcess = document =>
+                {
+                    document.Info.Version = "v1";
+                    document.Info.Title = "DiceRoll API";
+                    document.Info.Description = "A simple doll rolling service";
+                };
+            });
+
+            // mvc controllers
             services.AddControllers();
         }
 
@@ -43,6 +57,9 @@ namespace Dice.Api
             {
                 endpoints.MapControllers();
             });
+
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
         }
     }
 }
