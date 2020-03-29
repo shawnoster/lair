@@ -17,6 +17,7 @@ Road Map, you're hilarious, but here are a few thoughts:
 - create a service that accepts a free-form string (_3d6_) and returns the rolled value
 - create a front-end that calls the service and does something cool
 
-```curl
-GET host/diceroll/1d6
-```
+Current API end-points:
+
+- [https://lair-dice.azurewebsites.net/diceroll/1d20] - Roll 1d20 dice
+- [https://lair-dice.azurewebsites.net/swagger/index.html] - Swagger docs
